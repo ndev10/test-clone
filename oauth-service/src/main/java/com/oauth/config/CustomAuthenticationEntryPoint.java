@@ -15,7 +15,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
-
+/**
+ * This class is added to customize error code for invalid client details. If we don't add this
+ * spring by default gives 401 error code however it gives empty json response.
+ */
 @Component
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 

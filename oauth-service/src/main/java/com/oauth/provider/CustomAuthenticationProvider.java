@@ -12,6 +12,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * This class is used to handle custom authentication process. It will helps us to handle
+ * different sign in uses cases.
+ *
+ */
 @Component
 public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 

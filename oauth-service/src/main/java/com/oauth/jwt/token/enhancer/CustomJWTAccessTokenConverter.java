@@ -10,6 +10,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is used to set custom details to generated JWT token.
+ */
 public class CustomJWTAccessTokenConverter extends JwtAccessTokenConverter {
 
     @Override
