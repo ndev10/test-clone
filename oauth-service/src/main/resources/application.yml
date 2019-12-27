@@ -31,8 +31,8 @@ jwt.secret: secret
 
 oauth:
   client:
-    clientId: vms
-    clientSecret: vmsSecret#$
+    clientId: assignment
+    clientSecret: assignmentSecret#$
     authorizedGrantTypes: password,refresh_token
     scopes: read,write
     accessTokenValiditySeconds: 60

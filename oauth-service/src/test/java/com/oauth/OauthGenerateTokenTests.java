@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -31,6 +32,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes = OauthServiceApplication.class)
 public class OauthGenerateTokenTests {
 
+    @Value("${oauth.client.clientId}")
+    private String clientId;
+
+    @Value("${oauth.client.clientSecret}")
+    private String clientSecret;
+
     @Autowired
     private WebApplicationContext webApplicationContext;
 
@@ -39,15 +46,10 @@ public class OauthGenerateTokenTests {
 
     private MockMvc mockMvc;
 
-    private static final String CLIENT_ID = "vms";
-    private static final String CLIENT_SECRET = "vmsSecret#$";
-
     private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
 
-
-
     @Before
-    public void setup() throws Exception {
+    public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).addFilter(springSecurityFilterChain).build();
     }
 
@@ -55,14 +57,14 @@ public class OauthGenerateTokenTests {
     public void given_right_credentials_then_generate_token() throws Exception {
         final MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "password");
-        params.add("client_id", CLIENT_ID);
+        params.add("client_id", clientId);
         params.add("username", "john");
         params.add("password", "password");
 
 
         ResultActions result = mockMvc.perform(post("/oauth/token")
                 .params(params)
-                .with(httpBasic(CLIENT_ID, CLIENT_SECRET))
+                .with(httpBasic(clientId, clientSecret))
                 .accept(CONTENT_TYPE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(CONTENT_TYPE));
@@ -85,7 +87,7 @@ public class OauthGenerateTokenTests {
 
         ResultActions result = mockMvc.perform(post("/oauth/token")
                 .params(params)
-                .with(httpBasic(CLIENT_ID, CLIENT_SECRET))
+                .with(httpBasic(clientId, clientSecret))
                 .accept(CONTENT_TYPE))
                 .andExpect(status().is4xxClientError())
                 .andExpect(content().contentType(CONTENT_TYPE));
@@ -112,7 +114,7 @@ public class OauthGenerateTokenTests {
 
         ResultActions result = mockMvc.perform(post("/oauth/token")
                 .params(params)
-                .with(httpBasic("InvalidClient", CLIENT_SECRET))
+                .with(httpBasic("InvalidClient", clientSecret))
                 .accept(CONTENT_TYPE))
                 .andExpect(status().is4xxClientError());
 
@@ -121,6 +123,5 @@ public class OauthGenerateTokenTests {
         Assert.assertEquals(response.getStatus(), 401);
 
     }
-
 
 }
