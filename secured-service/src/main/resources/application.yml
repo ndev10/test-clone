@@ -1,0 +1,13 @@
+server:
+  port: 9004
+
+jwt.secret : secret
+oauth:
+  resource:
+    server:
+      enable: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug

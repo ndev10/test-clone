@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <configuration debug="true"> to get logback logs -->
+<configuration>
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<!-- To enable JMX Management -->
+	<jmxConfigurator />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+		<pattern>OauthService ${HOSTNAME} %date %level [%thread] %logger %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rolling"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>oauthService-log.txt</file>  <!-- current active file -->
+		<prudent>false</prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover on a daily basis -->
+			<fileNamePattern>oauth-com.oauth.service-log.txt-log-%d{yyyy-MM-dd}.%i.txt
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 200MB -->
+				<maxFileSize>70MB</maxFileSize>
+				<!-- keep 15 days' worth of history -->
+
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+		<encoder>
+		<pattern>AuthorizationService ${HOSTNAME} %date %level [%thread] %logger %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- THE root element configures the root logger -->
+	<root level="info">
+		<!-- attaching the same appender to multiple loggers will cause logging 
+			output to be duplicated. -->
+		<appender-ref ref="rolling" />
+		<appender-ref ref="console" />
+	</root>
+
+
+	<logger name="com.le" level="debug" />
+	<logger name="org.springframework" level="info" />
+	<!-- <logger name="org.hibernate" level="info" />
+	<logger name="org.apache.commons" level="info" />
+	<logger name="org.jets3t" level="info" /> -->
+</configuration>
