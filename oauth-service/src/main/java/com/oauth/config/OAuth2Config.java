@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("oauth.angular")
+@ConfigurationProperties("oauth.client")
 @Getter
 @Setter
 public class OAuth2Config {

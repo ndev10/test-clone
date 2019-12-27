@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  oauth-service:
+    build: ./oauth-service
+    ports:
+      - "9001:9001"
+    networks:
+      -  microservice-network
+  secured-service:
+    build: ./secured-service
+    ports:
+      - "9002:9002"
+    networks:
+      -  microservice-network
+networks:
+  microservice-network:
+    driver: bridge
