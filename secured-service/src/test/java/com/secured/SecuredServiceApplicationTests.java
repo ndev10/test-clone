@@ -6,8 +6,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SecuredServiceApplicationTests {
 
+
+
 	@Test
 	void contextLoads() {
+
+
 	}
+
+
 
 }
