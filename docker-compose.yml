@@ -1,6 +1,14 @@
 version: '3'
 services:
-
+  gateway-service:
+    build: ./gateway-service
+    ports:
+      - "9000:9000"
+    environment:
+      - ZUUL_ROUTES_OAUTH_SERVICE_URL=http://oauth-service:9001
+      - ZUUL_ROUTES_SECURED_SERVICE_URL=http://secured-service:9002
+    networks:
+      -  microservice-network
   oauth-service:
     build: ./oauth-service
     ports:
