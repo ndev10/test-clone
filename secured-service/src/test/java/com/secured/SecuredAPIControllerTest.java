@@ -72,4 +72,21 @@ public class SecuredAPIControllerTest {
         Assert.assertEquals(response.getStatus(), 401);
 
     }
+
+    @Test
+    public void givenNoToken_whenGetSecureRequest_thenUnauthorized() throws Exception {
+        ResultActions result = mockMvc.perform(get("/v1/users/user/info")
+                .accept("application/json;charset=UTF-8"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
+
+        MockHttpServletResponse response = result.andReturn().getResponse();
+        String resultString = response.getContentAsString();
+
+        System.out.println(resultString);
+        JacksonJsonParser jsonParser = new JacksonJsonParser();
+        String error =  jsonParser.parseMap(resultString).get("errorCode").toString();
+        Assert.assertEquals(error,"unauthorized");
+        Assert.assertEquals(response.getStatus(), 401);
+    }
 }

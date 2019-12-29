@@ -2,7 +2,7 @@ server:
   port: 9001
 
 spring:
-  application.name: oauth.service
+  application.name: oauth-service
   jpa:
     show-sql: true # for local testing
     hibernate:
