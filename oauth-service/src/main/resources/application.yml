@@ -35,7 +35,7 @@ oauth:
     clientSecret: assignmentSecret#$
     authorizedGrantTypes: password,refresh_token
     scopes: read,write
-    accessTokenValiditySeconds: 60
+    accessTokenValiditySeconds: 300
     refreshTokenValiditySeconds: 7200
 
 logging:
