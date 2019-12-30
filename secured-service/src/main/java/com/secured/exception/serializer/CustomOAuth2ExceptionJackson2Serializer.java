@@ -12,6 +12,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map.Entry;
 
+/**
+ * Custom serializer to add additional details  to the json response.
+ */
 
 public class CustomOAuth2ExceptionJackson2Serializer extends StdSerializer<CustomOauth2Exception> {
 

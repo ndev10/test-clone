@@ -6,6 +6,9 @@ import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
 import org.springframework.security.oauth2.common.exceptions.OAuth2ExceptionJackson1Deserializer;
 import org.springframework.security.oauth2.common.exceptions.OAuth2ExceptionJackson2Deserializer;
 
+/**
+ * Custom oauth exception to add additional details  to the json response when something goes wrong.
+ */
 @org.codehaus.jackson.map.annotate.JsonSerialize(using = CustomOAuth2ExceptionJackson1Serializer.class)
 @org.codehaus.jackson.map.annotate.JsonDeserialize(using = OAuth2ExceptionJackson1Deserializer.class)
 @com.fasterxml.jackson.databind.annotation.JsonSerialize(using = CustomOAuth2ExceptionJackson2Serializer.class)

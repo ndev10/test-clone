@@ -14,7 +14,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-
+/**
+ * Custom serializer to add additional details  to the json response
+ */
 public class CustomOAuth2ExceptionJackson1Serializer extends JsonSerializer<CustomOauth2Exception> {
 
     @Override

@@ -14,7 +14,9 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import java.io.IOException;
 
-
+/**
+ * Override the exception translator to have custom oauth exception json response.
+ */
 public class Oauth2WebResponseExceptionTranslator implements WebResponseExceptionTranslator {
 
     private ThrowableAnalyzer throwableAnalyzer = new DefaultThrowableAnalyzer();

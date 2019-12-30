@@ -8,6 +8,10 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
+/**
+ * Override the default token service to have custom exception when token gets expired. Otherwise it was
+ * difficult to identify the invalid token and expired token.
+ */
 public class CustomTokenServices extends DefaultTokenServices {
 
     private TokenStore tokenStore;

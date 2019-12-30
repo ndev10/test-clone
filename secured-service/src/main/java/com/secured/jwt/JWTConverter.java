@@ -5,6 +5,9 @@ import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConv
 
 import java.util.Map;
 
+/**
+ * Converter class added to copy the map of JWT payload to the Authentication object.
+ */
 public class JWTConverter extends DefaultAccessTokenConverter {
     @Override
     public OAuth2Authentication extractAuthentication(Map<String, ?> map) {
