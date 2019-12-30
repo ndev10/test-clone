@@ -1,4 +1,4 @@
-# assignment-workspace
+# Oauth Assignment
 
 Following are the steps to run the applicaiton::
   1) build gateway-service, oauth-service and secured-service with command mvnw clean install
@@ -17,7 +17,7 @@ Following are the steps to run the applicaiton::
   &nbsp;&nbsp;username = john  <br/>
   &nbsp;&nbsp;password = password  <br/>
     
-  Respose example:  <br/>
+  Response example:  <br/>
   {
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJ1c2VyX25hbWUiOiJqb2huIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU3NzYxNDA0MywidXNlcklkIjoxLCJqdGkiOiI5YWQ4ODFkZi0xZGFmLTQwN2MtODU2Yi1jYzM2NDRkYjY1ODAiLCJlbWFpbCI6Inh5ekBlbWFpbC5jb20iLCJjbGllbnRfaWQiOiJhc3NpZ25tZW50In0.xy1wmfr3oiCHDB3SJ5hQ-jSMrrVCcNtaDoFacOYE7kw",
     "token_type": "bearer",
@@ -37,7 +37,7 @@ Request paramteres (x-www-form-urlencoded)  <br/>
 &nbsp;&nbsp;grant_type = refresh_token  <br/>
 &nbsp;&nbsp;refresh_token = <refresh token got in oauth token api response>  <br/>
 
-Respose example:  <br/>
+Response example:  <br/>
       {
     "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJ1c2VyX25hbWUiOiJqb2huIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTU3NzYxNDQyMSwidXNlcklkIjoxLCJqdGkiOiJiZDExZDM0NS1lNzhmLTRjYTQtYjFhYS0xYjZiZjkyODBmZTEiLCJlbWFpbCI6Inh5ekBlbWFpbC5jb20iLCJjbGllbnRfaWQiOiJhc3NpZ25tZW50In0.PkESfc3Oj7JjcDO9WFJdzJm-l6lljAWKiDHWLHFTkt4",
     "token_type": "bearer",
