@@ -5,7 +5,7 @@ Following are the steps to run the applicaiton::
   2) run command docker-compose build 
   3) run command docker-compose up -d (It will run both the application inside docker container)
   
- # Oauth generate token API details
+ ## Oauth generate token API details
  
   URL: http://localhost:9000/api/oauth-service/oauth/token <br/>
   Method: Post <br/>
@@ -26,7 +26,7 @@ Following are the steps to run the applicaiton::
     "scope": "read write"
 }  <br/>
 
- # Oauth refresh token API details
+ ## Oauth refresh token API details
 
 URL: http://localhost:9000/api/oauth-service/oauth/token  <br/>
 Method: Post  <br/>
@@ -45,4 +45,19 @@ Response example:  <br/>
     "expires_in": 299,
     "scope": "read write"
 }
-    
+
+
+ ## Secured API with OAUTH token
+
+URL: http://localhost:9000/api/secured-service/v1/users/user/info  <br/>
+Method: GET  <br/>
+Header  <br/>
+&nbsp;&nbsp; Authroization : bearer <access_token got from oauth api> <br/>
+
+Response example:  <br/>
+{
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "xyz@email.com"
+}
