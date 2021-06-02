@@ -1,4 +1,4 @@
-# Oauth Assignment
+# Oauth Assignment updated
 
 Following are the steps to run the applicaiton::
   1) build gateway-service, oauth-service and secured-service with command mvnw clean install
